@@ -17,7 +17,8 @@ let prevs =
   40: "XL",
   9: "IX",
   400: "CD",
-  900: "CM"
+  900: "CM",
+  90:"XC",
 };
 
 let forwardvalues =
@@ -25,13 +26,6 @@ let forwardvalues =
   1: 4,
   10: 40,
   100: 400
-};
-
-let backvaluesnumerals =
-{
-  5: "IX",
-  50: "XC",
-  500: "CM",
 };
 
 let nums =
@@ -44,7 +38,9 @@ let backvaluesnumeralstovalue =
   500: 900
 };
 
-function returnMany(number, num) {
+
+
+export function returnMany(number, num) {
   let howMany = Math.floor(number / num);
   switch (howMany) {
     case 1:
@@ -56,13 +52,17 @@ function returnMany(number, num) {
   }
 }
 
-function convert(number) {
+export function convert(number) {
+  if(isNaN(number) || number > 3999)
+  {
+    return;
+  }
   let value = minimalValue(number);
   if (number <= 0) return "";
-
   if (backones.includes(value)) {
+    
     if (number >= backvaluesnumeralstovalue[value]) {
-      return prevs[backvaluesnumerals[value]] + convert(number - backvaluesnumeralstovalue[value]);
+      return prevs[backvaluesnumeralstovalue[value]] + convert(number - backvaluesnumeralstovalue[value]);
     }
     else {
       return decimals[value] + convert(number - value);
@@ -74,19 +74,14 @@ function convert(number) {
     }
     else {
       let returnedMany = returnMany(number, value);
-      console.log(returnedMany)
-      console.log(value)
-      console.log(returnMany.length * value);
-      return returnedMany + convert(number - (returnMany.length * value));
+      return returnedMany + convert(number - (returnedMany.length * value));
     }
   }
 }
 
-
 export function minimalValue(number) {
   return Math.max(...nums.filter(x => !(x > number)));
 }
-
 export default convert;
 
 

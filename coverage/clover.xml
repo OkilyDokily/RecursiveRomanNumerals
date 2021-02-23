@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1614037066601" clover="3.2.0">
-  <project timestamp="1614037066601" name="All files">
-    <metrics statements="24" coveredstatements="9" conditionals="11" coveredconditionals="0" methods="5" coveredmethods="3" elements="40" coveredelements="12" complexity="0" loc="24" ncloc="24" packages="1" files="1" classes="1"/>
+<coverage generated="1614124593543" clover="3.2.0">
+  <project timestamp="1614124593543" name="All files">
+    <metrics statements="24" coveredstatements="23" conditionals="15" coveredconditionals="14" methods="4" coveredmethods="4" elements="43" coveredelements="41" complexity="0" loc="24" ncloc="24" packages="1" files="1" classes="1"/>
     <file name="roman-numeral-converter.js" path="C:\Users\irons\Desktop\RecursiveRomanNumerals\src\roman-numeral-converter.js">
-      <metrics statements="24" coveredstatements="9" conditionals="11" coveredconditionals="0" methods="5" coveredmethods="3"/>
+      <metrics statements="24" coveredstatements="23" conditionals="15" coveredconditionals="14" methods="4" coveredmethods="4"/>
       <line num="2" count="1" type="stmt"/>
       <line num="12" count="1" type="stmt"/>
       <line num="15" count="1" type="stmt"/>
-      <line num="24" count="1" type="stmt"/>
-      <line num="31" count="1" type="stmt"/>
-      <line num="38" count="1" type="stmt"/>
-      <line num="41" count="1" type="stmt"/>
-      <line num="48" count="0" type="stmt"/>
-      <line num="49" count="0" type="cond" truecount="0" falsecount="3"/>
-      <line num="51" count="0" type="stmt"/>
-      <line num="53" count="0" type="stmt"/>
-      <line num="55" count="0" type="stmt"/>
-      <line num="60" count="0" type="stmt"/>
-      <line num="61" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="63" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="64" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="65" count="0" type="stmt"/>
-      <line num="68" count="0" type="stmt"/>
-      <line num="72" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="73" count="0" type="stmt"/>
-      <line num="76" count="0" type="stmt"/>
-      <line num="77" count="0" type="stmt"/>
-      <line num="84" count="21" type="stmt"/>
-      <line num="85" count="21" type="stmt"/>
+      <line num="25" count="1" type="stmt"/>
+      <line num="32" count="1" type="stmt"/>
+      <line num="35" count="1" type="stmt"/>
+      <line num="44" count="15" type="stmt"/>
+      <line num="45" count="15" type="cond" truecount="3" falsecount="0"/>
+      <line num="47" count="11" type="stmt"/>
+      <line num="49" count="2" type="stmt"/>
+      <line num="51" count="2" type="stmt"/>
+      <line num="56" count="31" type="cond" truecount="3" falsecount="1"/>
+      <line num="58" count="0" type="stmt"/>
+      <line num="60" count="31" type="stmt"/>
+      <line num="61" count="31" type="cond" truecount="2" falsecount="0"/>
+      <line num="62" count="23" type="cond" truecount="2" falsecount="0"/>
+      <line num="64" count="12" type="cond" truecount="2" falsecount="0"/>
+      <line num="65" count="7" type="stmt"/>
+      <line num="68" count="5" type="stmt"/>
+      <line num="72" count="11" type="cond" truecount="2" falsecount="0"/>
+      <line num="73" count="1" type="stmt"/>
+      <line num="76" count="10" type="stmt"/>
+      <line num="77" count="10" type="stmt"/>
+      <line num="83" count="252" type="stmt"/>
     </file>
   </project>
 </coverage>
