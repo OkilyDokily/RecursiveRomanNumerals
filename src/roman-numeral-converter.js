@@ -1,14 +1,3 @@
-let numerals =
-{
-  I: 1,
-  V: 5,
-  X: 10,
-  L: 50,
-  C: 100,
-  D: 500,
-  M: 1000
-};
-
 let decimals =
 {
   1: "I",
@@ -20,105 +9,84 @@ let decimals =
   1000: "M"
 };
 
-let nums =
-  [1, 5, 10, 50, 100, 500, 1000];
-
 let backones = [5, 50, 500];
-let prevsarray = [10, 100, 1000];
 
 let prevs =
 {
-  5: "IV",
-  50: "XL",
-  10: "IX",
-  500: "CD",
-  1000: "CM"
+  4: "IV",
+  40: "XL",
+  9: "IX",
+  400: "CD",
+  900: "CM"
 };
 
-let backvalues =
+let forwardvalues =
 {
-  5: 4,
-  50: 40,
-  500: 400
+  1: 4,
+  10: 40,
+  100: 400
 };
 
 let backvaluesnumerals =
 {
-  5:"IX",
-  50:"XC",
-  500:"CM",
-}
+  5: "IX",
+  50: "XC",
+  500: "CM",
+};
+
+let nums =
+  [1, 5, 10, 50, 100, 500, 1000];
 
 let backvaluesnumeralstovalue =
 {
-  5:9,
-  50:90,
-  500:900
-}
-
-let minusValues =
-{
-  10: 9,
-  100: 90,
-  1000: 900,
+  5: 9,
+  50: 90,
+  500: 900
 };
 
 function returnMany(number, num) {
   let howMany = Math.floor(number / num);
   switch (howMany) {
-  case 1:
-    return decimals[num];
-  case 2:
-    return decimals[num] + decimals[num];
-  case 3:
-    return decimals[num] + decimals[num] + decimals[num];
+    case 1:
+      return decimals[num];
+    case 2:
+      return decimals[num] + decimals[num];
+    case 3:
+      return decimals[num] + decimals[num] + decimals[num];
   }
-}
-
-function returnPreviousSymbols(num,recurse) {
-  return [prevs[num]];
 }
 
 function convert(number) {
   let value = minimalValue(number);
+  if (number <= 0) return "";
 
   if (backones.includes(value)) {
-    if(isThree(number))
-    {
-      let recursedValued = returnMany(number, value);
-      let newnum = value + (numerals[recursedValued[0]]*recursedValued.length);
-      return recursedValued + convert(newnum); 
+    if (number >= backvaluesnumeralstovalue[value]) {
+      return prevs[backvaluesnumerals[value]] + convert(number - backvaluesnumeralstovalue[value]);
     }
-    else
-    {
-      let newnum =  number - backvaluesnumeralstovalue[value];
-      return getBackValueForBackOnesList(value) + convert(newnum);
+    else {
+      return decimals[value] + convert(number - value);
+    }
+  }
+  else {
+    if (number >= forwardvalues[value]) {
+      return prevs[forwardvalues[value]] + convert(number - forwardvalues[value])
+    }
+    else {
+      let returnedMany = returnMany(number, value);
+      console.log(returnedMany)
+      console.log(value)
+      console.log(returnMany.length * value);
+      return returnedMany + convert(number - (returnMany.length * value));
     }
   }
 }
 
-function getBackValueForBackOnesList(value)
-{
-  return backvaluesnumerals[value]
+
+export function minimalValue(number) {
+  return Math.max(...nums.filter(x => !(x > number)));
 }
 
-function isPrev(number) {
-  let value = minimalValue(number);
-  let prev = nums[nums.indexOf(value) - 1];
-  let more = nums[nums.indexOf(value) + 1];
+export default convert;
 
-  let minusValue = minusValues[more];
-  return (value + (prev * 3)) >= minusValue;
-}
-
-
-function minimalValue(number) {
-  return Math.max(nums.filter(x => !(x > number)));
-}
-
-function isThree(number) {
-  let value = minimalValue(number);
-  let moreValue = nums[nums.indexOf(value) + 1];
-  return !(number >= backvalues[moreValue]);
-}
 
