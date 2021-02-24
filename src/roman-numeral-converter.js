@@ -27,13 +27,6 @@ let forwardvalues =
   100: 400
 };
 
-let backvaluesnumerals =
-{
-  5: "IX",
-  50: "XC",
-  500: "CM",
-};
-
 let nums =
   [1, 5, 10, 50, 100, 500, 1000];
 
@@ -56,37 +49,37 @@ function returnMany(number, num) {
   }
 }
 
-function convert(number) {
-  let value = minimalValue(number);
-  if (number <= 0) return "";
-
-  if (backones.includes(value)) {
-    if (number >= backvaluesnumeralstovalue[value]) {
-      return prevs[backvaluesnumerals[value]] + convert(number - backvaluesnumeralstovalue[value]);
+export function overFunction(numberC){
+  let emptyString = "";
+  return function convert(numberC) {
+    let value = minimalValue(numberC);
+    if (numberC <= 0) return emptyString;
+    
+    if (backones.includes(value)) {
+      if (numberC >= backvaluesnumeralstovalue[value]) {
+        return prevs[backvaluesnumeralstovalue[value]] + convert(numberC - backvaluesnumeralstovalue[value]);
+      }
+      else {
+        return decimals[value] + convert(numberC - value);
+      }
     }
     else {
-      return decimals[value] + convert(number - value);
+      if (numberC >= forwardvalues[value]) {
+        return prevs[forwardvalues[value]] + convert(numberC- forwardvalues[value])
+      }
+      else {
+        let returnedMany = returnMany(numberC, value);
+        return returnedMany + convert(numberC - (returnedMany.length * value));
+      }
     }
-  }
-  else {
-    if (number >= forwardvalues[value]) {
-      return prevs[forwardvalues[value]] + convert(number - forwardvalues[value])
-    }
-    else {
-      let returnedMany = returnMany(number, value);
-      console.log(returnedMany)
-      console.log(value)
-      console.log(returnMany.length * value);
-      return returnedMany + convert(number - (returnMany.length * value));
-    }
-  }
-}
+  };
+};
 
 
 export function minimalValue(number) {
   return Math.max(...nums.filter(x => !(x > number)));
 }
 
-export default convert;
+export default overFunction;
 
 

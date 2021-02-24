@@ -1,4 +1,4 @@
-import convert from './roman-numeral-converter.js';
+import overFunction from './roman-numeral-converter.js';
 
 
-console.log(convert(1422));
+console.log(overFunction()(422));
