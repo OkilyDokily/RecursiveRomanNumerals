@@ -1,5 +1,4 @@
-let decimals =
-{
+let decimals = {
   1: "I",
   5: "V",
   10: "X",
@@ -11,18 +10,16 @@ let decimals =
 
 let backones = [5, 50, 500];
 
-let prevs =
-{
+let prevs = {
   4: "IV",
   40: "XL",
   9: "IX",
   400: "CD",
   900: "CM",
-  90:"XC",
+  90: "XC",
 };
 
-let forwardvalues =
-{
+let forwardvalues = {
   1: 4,
   10: 40,
   100: 400
@@ -31,13 +28,11 @@ let forwardvalues =
 let nums =
   [1, 5, 10, 50, 100, 500, 1000];
 
-let backvaluesnumeralstovalue =
-{
+let backvaluesnumeralstovalue = {
   5: 9,
   50: 90,
   500: 900
 };
-
 
 
 export function returnMany(number, num) {
@@ -53,14 +48,13 @@ export function returnMany(number, num) {
 }
 
 export function convert(number) {
-  if(isNaN(number) || number > 3999)
-  {
+  if (isNaN(number) || number > 3999) {
     return;
   }
   let value = minimalValue(number);
   if (number <= 0) return "";
   if (backones.includes(value)) {
-    
+
     if (number >= backvaluesnumeralstovalue[value]) {
       return prevs[backvaluesnumeralstovalue[value]] + convert(number - backvaluesnumeralstovalue[value]);
     }

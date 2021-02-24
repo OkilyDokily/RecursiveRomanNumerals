@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1614124593543" clover="3.2.0">
-  <project timestamp="1614124593543" name="All files">
+<coverage generated="1614204361708" clover="3.2.0">
+  <project timestamp="1614204361708" name="All files">
     <metrics statements="24" coveredstatements="23" conditionals="15" coveredconditionals="14" methods="4" coveredmethods="4" elements="43" coveredelements="41" complexity="0" loc="24" ncloc="24" packages="1" files="1" classes="1"/>
     <file name="roman-numeral-converter.js" path="C:\Users\irons\Desktop\RecursiveRomanNumerals\src\roman-numeral-converter.js">
       <metrics statements="24" coveredstatements="23" conditionals="15" coveredconditionals="14" methods="4" coveredmethods="4"/>
